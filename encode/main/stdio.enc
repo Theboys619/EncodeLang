@@ -1,0 +1,10 @@
+// Basic JS Console Log //
+```
+// Start of Print Constants //
+const {
+	log: print,
+	error: printerr
+} = console;
+
+// End of Print Constants //
+```
