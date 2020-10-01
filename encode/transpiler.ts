@@ -239,18 +239,23 @@ export default class Transpiler {
 
 	createFunction(exp: Statement, env: Environment, indentation: boolean = true, addition: boolean | string = "") {
 		const {
-		parameters,
-		scope,
-		name: {
-			value: funcName
-		}
-	} = exp.value;
+      isAnonymous,
+      parameters,
+      scope,
+      name: {
+        value: funcName
+      }
+    } = exp.value;
 
 		const indent = indentation
 		? this.getIndent(env)
 		: "";
 
-		this.code += `${indent}function ${funcName}(`;
+		this.code += `${indent}function ${
+      (isAnonymous)
+      ? ""
+      : funcName
+    }(`;
 		
 		let first = true;
 

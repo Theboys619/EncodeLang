@@ -537,8 +537,16 @@ export default class Parser { // Modify the parser as you please
     this.skipOver("create");
     this.skipOver("function");
 
-    const funcName = this.curTok;
-    this.advance();
+    const isAnonymous = (
+      this.curTok.value == "with"
+      || this.curTok.value == "{"
+    );
+
+    const funcName = (!isAnonymous)
+    ? this.curTok
+    : { value: "Anonymous", type: "String", index: this.curTok.index, line: this.curTok.line };
+
+    if (!isAnonymous) this.advance();
 
     const parameters = (this.curTok.value == "with")
     ? this.pDelimiters("with", ".", ",", this.pExpression)
@@ -552,6 +560,7 @@ export default class Parser { // Modify the parser as you please
 
     return new Statement("Function", {
       name: funcName,
+      isAnonymous,
       parameters,
       scope
     });

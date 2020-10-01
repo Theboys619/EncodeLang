@@ -176,8 +176,7 @@ async function run(
 	} else {
 		// probably newlines causing undefineds to pop up
 		const process = Deno.run({
-			stdout: "piped",
-			stdin: "piped",
+      stdout: "piped",
 			cmd: ["deno", "eval", transpiler.code]
 		}); // Idk if this is ok
 
@@ -185,14 +184,5 @@ async function run(
 		.output()
 		.then(decode)
 		.then(console.log);
-
-		// process
-		// .stdin
-		// .write(code)
-		// .then(
-		// 	() => {
-		// 		process.stdin.close();
-		// 	}
-		// );
 	}
 };

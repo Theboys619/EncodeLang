@@ -1,5 +1,3 @@
-// Basic JS Console Log //
-```
 // Start of Print Constants //
 const {
 	log: print,
@@ -20,4 +18,16 @@ const readInput = async (cb) => {
 }
 
 // End of Print Constants //
-```
+
+function factorial(num) {
+  if (num === 1) {
+    return 1;
+  } else {
+    return num * factorial(num - 1);
+  };
+};
+print(factorial(5));
+print("What is your name?");
+readInput(function (data) {
+  print("Hello " + data + "!");
+});

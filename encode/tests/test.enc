@@ -1,26 +1,5 @@
 import "stdio.enc";
 
-// FuntionCalls //
-
-call print with "wow", "this", "is", "neat".
-call print.
-
-// Variables //
-
-set constant x to 5 + 5. // Constant
-set y to 5.
-
-// Functions //
-
-create function cool with test. {
-  call print with test.
-}
-
-call cool with x.
-call print with y.
-
-// If statements //
-
 create function factorial with num. {
   {
     return 1.
@@ -29,10 +8,11 @@ create function factorial with num. {
   }
 }
 
-create function testFunc with anotherFunc. {
-  return call anotherFunc with 3.
+call print with call factorial with 5.
+call print with "What is your name?".
+
+
+// Anonymous functions and functions as parameters
+call readInput with create function with data. {
+  call print with "Hello " + data + "!".
 }
-
-call print with call testFunc with factorial.
-
-call print with call factorial with 5. // Factorial 5 is 120 so yea
